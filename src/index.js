@@ -5,6 +5,7 @@ import { notFound, catchErrors } from './middlewares/errors';
 import bodyParser from 'body-parser';
 import register from 'babel-core/register';
 import babelPolyfill from 'babel-polyfill';
+import auth from './routes/auth';
 
 // Connect to database
 import dbConfig from './config/database';
@@ -26,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // routes config
-// ...
+app.use('/api/auth', auth());
 
 // errors handling
 app.use(notFound);
