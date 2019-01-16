@@ -2,7 +2,7 @@
   "name": "myscrum-api",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "build": "rimraf ./dist && babel ./src -d ./dist",
     "prestart": "yarn run -s build",
