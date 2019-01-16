@@ -4,6 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "build": "rimraf ./dist && babel ./src -d ./dist",
+    "prestart": "yarn run -s build",
+    "start": "NODE_ENV=production PORT=8080 node dist/index.js",
+    "dev": "NODE_ENV=development PORT=8080 nodemon -w ./src --exec \"babel-node ./src\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jakub Mandra",
