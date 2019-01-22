@@ -1,15 +1,22 @@
+import dotenv from 'dotenv';
+dotenv.config({ path: '.env' });
+
 import express from 'express';
 import { join } from 'path';
-import config from './config/config';
-import { notFound, catchErrors } from './middlewares/errors';
 import bodyParser from 'body-parser';
 import register from 'babel-core/register';
 import babelPolyfill from 'babel-polyfill';
+import mongoose from 'mongoose';
+
+import { notFound, catchErrors } from './middlewares/errors';
+
 import auth from './routes/auth';
 
-// Connect to database
+import config from './config/config';
 import dbConfig from './config/database';
-import mongoose from 'mongoose';
+import passport from './config/passport';
+
+passport();
 
 mongoose.connect(dbConfig.mongoUrl);
 mongoose.Promise = global.Promise;
