@@ -11,6 +11,7 @@ import mongoose from 'mongoose';
 import { notFound, catchErrors } from './middlewares/errors';
 
 import auth from './routes/auth';
+import projects from './routes/projects';
 
 import config from './config/config';
 import dbConfig from './config/database';
@@ -27,14 +28,15 @@ mongoose.connection.on('error', (err) => {
 
 const app = express();
 
-// app.set('view engine', 'pug');
-// app.set('views', join(__dirname, 'views'));
+app.set('view engine', 'pug');
+app.set('views', join(__dirname, 'views'));
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // routes config
 app.use('/api/auth', auth());
+app.use('/api/projects', projects());
 
 // errors handling
 app.use(notFound);

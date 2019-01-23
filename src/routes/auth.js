@@ -6,8 +6,8 @@ import passport from 'passport';
 export default () => {
     const api = Router();
 
-    api.post('/login', passport.authenticate('local', { session: false}), AuthController.login);
-    api.post('/register', AuthController.register);
+    api.post('/login', passport.authenticate('local', { session: false}), catchAsync(AuthController.login));
+    api.post('/register', catchAsync(AuthController.register));
 
     return api;
 }
