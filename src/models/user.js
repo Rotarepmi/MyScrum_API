@@ -9,7 +9,9 @@ const UserSchema = mongoose.Schema({
         unique: true,
         lowercase: true,
         trim: true
-    }
+    },
+    company: String,
+    projects: Array,
 }, {
     timestamps: true
 });
