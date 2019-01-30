@@ -1,4 +1,4 @@
-import Task from '../models/tasks';
+import Task from '../models/task';
 
 export default {
     async findOne(req, res, next) {
