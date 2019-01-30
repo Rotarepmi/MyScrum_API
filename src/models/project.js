@@ -7,7 +7,7 @@ const ProjectSchema = mongoose.Schema({
         last_name: String,
         id: Object
     },
-    participants: [{
+    users: [{
         first_name: String,
         last_name: String,
         id: Object

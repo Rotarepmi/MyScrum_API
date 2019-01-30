@@ -16,7 +16,7 @@ export default {
         const project = await new Project({
             name: req.body.name,
             creator: req.body.creator,
-            participants: req.body.participants,
+            users: req.body.users,
             tasks: req.body.tasks
         }).save();
 
