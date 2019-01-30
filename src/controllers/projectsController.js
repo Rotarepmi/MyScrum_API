@@ -16,7 +16,8 @@ export default {
         const project = await new Project({
             name: req.body.name,
             creator: req.body.creator,
-            participants: []
+            participants: req.body.participants,
+            tasks: req.body.tasks
         }).save();
 
         return res.status(201).send({ data: project, message: 'Project successfully created.'});
@@ -36,8 +37,14 @@ export default {
         const project = await Project.findOne({ _id: req.params.id });
         if(!project) return next();
 
-        await project.remove();
+        if(req.body.user.id === project.creator.id) {
+            await project.remove();
+    
+            return res.status(200).send({ data: project, message: 'Project successfully deleted.'});
+        }
+        else {
+            return res.status(403).send({ data: req.body.user, message: 'Permission forbidden. Only creator can delete project.'})
+        }
 
-        return res.status(200).send({ data: project, message: 'Project successfully deleted.'});
     },
 }
