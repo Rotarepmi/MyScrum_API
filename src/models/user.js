@@ -10,8 +10,18 @@ const UserSchema = mongoose.Schema({
         lowercase: true,
         trim: true
     },
-    company: String,
-    projects: Array,
+    company: {
+        name: String,
+        id: Object
+    },
+    projects: [{
+        name: String,
+        id: Object
+    }],
+    tasks: [{
+        name: String,
+        id: Object
+    }],
 }, {
     timestamps: true
 });

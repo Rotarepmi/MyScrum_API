@@ -1,11 +1,23 @@
 import mongoose from 'mongoose';
 
-const Project = mongoose.Schema({
+const ProjectSchema = mongoose.Schema({
     name: String,
-    creator: Object,
-    participants: Array
+    creator: {
+        first_name: String,
+        last_name: String,
+        id: Object
+    },
+    participants: [{
+        first_name: String,
+        last_name: String,
+        id: Object
+    }],
+    tasks: [{
+        name: String,
+        id: Object
+    }]
 }, {
     timestamps: true
 });
 
-export default mongoose.model('Project', Project);
+export default mongoose.model('Project', ProjectSchema);
