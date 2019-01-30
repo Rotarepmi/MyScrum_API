@@ -19,6 +19,7 @@ import { notFound, catchErrors } from './middlewares/errors';
 // routes
 import auth from './routes/auth';
 import projects from './routes/projects';
+import tasks from './routes/tasks';
 
 // verify user callbacks
 passport();
@@ -44,6 +45,7 @@ app.use(bodyParser.json());
 // use routes
 app.use('/api/auth', auth());
 app.use('/api/projects', projects());
+app.use('/api/tasks', tasks());
 
 // errors handling
 app.use(notFound);
