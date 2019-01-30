@@ -11,8 +11,8 @@ export default {
     },
 
     async register(req, res, next) {
-        const { first_name, last_name, email, company, projects, tasks, password } = req.body;
-        const user = new User({ first_name, last_name, email, company, projects, tasks });
+        const { first_name, last_name, email, company, password } = req.body;
+        const user = new User({ first_name, last_name, email, company });
         await User.register(user, password);
 
         res.send('User created successfully. Now you can log in.');
