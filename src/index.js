@@ -25,7 +25,7 @@ import tasks from './routes/tasks';
 passport();
 
 // connect to mongoDB
-mongoose.connect(dbConfig.mongoUrl);
+mongoose.connect(dbConfig.mongoUrl, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 mongoose.connection.on('error', (err) => {
     console.log('Could not connect to the database. Exiting now...');
@@ -39,8 +39,7 @@ const app = express();
 app.set('view engine', 'pug');
 app.set('views', join(__dirname, 'views'));
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.json()); // application/json headers
 
 // use routes
 app.use('/api/auth', auth());
