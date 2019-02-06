@@ -1,25 +1,24 @@
 import mongoose from 'mongoose';
+const Schema = mongoose.Schema;
 
-const TaskSchema = mongoose.Schema({
+const TaskSchema = Schema({
     name: String,
     description: String,
     status: String,
     creator: {
-      first_name: String,
-      last_name: String,
-      id: Object
+        username: String,
+        _id: Schema.Types.ObjectId
     },
     project: {
         name: String,
-        id: Object
+        _id: Schema.Types.ObjectId
     },
     users: [{
-        first_name: String,
-        last_name: String,
-        id: Object
+        username: String,
+        _id: Schema.Types.ObjectId
     }],
-}, {
-    timestamps: true
-});
+    }, {
+        timestamps: true
+    });
 
 export default mongoose.model('Task', TaskSchema);
