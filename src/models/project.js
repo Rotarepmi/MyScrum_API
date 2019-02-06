@@ -1,20 +1,19 @@
 import mongoose from 'mongoose';
+const Schema = mongoose.Schema;
 
-const ProjectSchema = mongoose.Schema({
+const ProjectSchema = Schema({
     name: String,
     creator: {
-        first_name: String,
-        last_name: String,
-        id: Object
+        username: String,
+        _id: Schema.Types.ObjectId
     },
     users: [{
-        first_name: String,
-        last_name: String,
-        id: Object
+        username: String,
+        _id: Schema.Types.ObjectId
     }],
     tasks: [{
         name: String,
-        id: Object
+        _id: Schema.Types.ObjectId
     }]
 }, {
     timestamps: true
