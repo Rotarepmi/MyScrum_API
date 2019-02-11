@@ -7,9 +7,14 @@ const ProjectSchema = Schema({
         username: String,
         _id: Schema.Types.ObjectId
     },
+    description: String,
     users: [{
         username: String,
         _id: Schema.Types.ObjectId
+    }],
+    epics: [{
+        description: String,
+        state: Boolean
     }],
     tasks: [{
         name: String,
