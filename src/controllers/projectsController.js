@@ -8,7 +8,7 @@ export default {
     },
  
     async findAll(req, res) {
-        const projects = await Project.find().sort({ createdAt: 'desc' });
+        const projects = await Project.find().sort({ createdAt: 'asc' });
         return res.status(200).send({ data: projects });
     },
  
@@ -16,8 +16,7 @@ export default {
         const project = await new Project({
             name: req.body.name,
             creator: req.body.creator,
-            users: req.body.users,
-            tasks: req.body.tasks
+            description: req.body.description
         }).save();
 
         return res.status(201).send({ data: project, message: 'Project successfully created.'});
