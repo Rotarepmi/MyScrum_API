@@ -8,7 +8,7 @@ export default {
     const token = jwt.sign({ id: req.user._id }, process.env.JWT_SECRET, { expiresIn: 1200 });
 
     // return token
-    return res.status(200).json({ token: token });
+    return res.status(200).json({ username: req.user.username, _id: req.user._id, token: token });
   },
 
   async register(req, res, next) {
