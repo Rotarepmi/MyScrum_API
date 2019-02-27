@@ -9,7 +9,7 @@ export function validateRegister() {
       .custom((value, { req }) => {
         return User.findOne({ email: value })
           .then(document => {
-            if(document) return Promise.reject('Email address already exists');
+            if(document) return Promise.reject('Email already in use');
           })
       })
       .normalizeEmail(),
@@ -17,10 +17,10 @@ export function validateRegister() {
       .custom((value, { req }) => {
         return User.findOne({ username: value })
           .then(document => {
-            if(document) return Promise.reject('Username is already in use'); 
+            if(document) return Promise.reject('Username already in use'); 
           })
       })
       .trim().not().isEmpty(),
-    body('password').trim().isLength({ min: 5 })
+    body('password').trim().matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i").withMessage('Password is too weak')
   ]
 }
