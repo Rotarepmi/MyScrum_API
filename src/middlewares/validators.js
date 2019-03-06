@@ -21,6 +21,6 @@ export function validateRegister() {
           })
       })
       .trim().not().isEmpty(),
-    body('password').trim().matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i").withMessage('Password is too weak')
+    body('password').trim().matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i").withMessage('Password should contain uppercase and digit')
   ]
 }
